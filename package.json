@@ -1,0 +1,23 @@
+{
+  "name": "channel-surfer",
+  "version": "1.0.0",
+  "description": "Promise-based CSP channels",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test.js"
+  },
+  "keywords": [
+    "csp",
+    "channels",
+    "promises"
+  ],
+  "author": "Stephen Belanger <admin@stephenbelanger.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "native-or-bluebird": "^1.2.0"
+  },
+  "devDependencies": {
+    "tap": "^10.7.2"
+  }
+}

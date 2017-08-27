@@ -19,5 +19,13 @@
   },
   "devDependencies": {
     "tap": "^10.7.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Qard/channel-surfer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Qard/channel-surfer/issues"
+  },
+  "homepage": "https://github.com/Qard/channel-surfer#readme"
 }

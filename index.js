@@ -95,6 +95,14 @@ class Channel {
       request.resolve(data)
     }
   }
+
+  next () {
+    return this.take()
+  }
+
+  [Symbol.asyncIterator]() {
+    return this
+  }
 }
 
 module.exports = Channel

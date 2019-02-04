@@ -98,3 +98,17 @@ tap.test('close finalization', async (t) => {
 
   t.end()
 })
+
+tap.test('async iteration', async (t) => {
+  const channel = new Channel()
+  channel.give(1)
+  channel.give(2)
+  channel.close()
+
+  let i = 0
+  for await (let result of channel) {
+    t.equal(++i, result)
+  }
+
+  t.end()
+})

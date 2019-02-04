@@ -1,6 +1,6 @@
 # channel-surfer
 
-Promise-based CSP channels.
+Promise-based CSP channels, with async iterator support.
 
 ## Install
 
@@ -15,8 +15,7 @@ const Channel = require('channel-surfer')
 const chan = new Channel()
 
 async function consumer() {
-  while (true) {
-    const message = await chan.take()
+  for await (let message of chan) {
     console.log('received', message)
   }
 }
@@ -28,7 +27,7 @@ setInterval(() => {
 
 ---
 
-### Copyright (c) 2017 Stephen Belanger
+### Copyright (c) 2019 Stephen Belanger
 
 #### Licensed under MIT License
 

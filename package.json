@@ -18,7 +18,7 @@
     "bluebird": "^3.5.0"
   },
   "devDependencies": {
-    "tap": "^10.7.2"
+    "tap": "^12.5.1"
   },
   "repository": {
     "type": "git",

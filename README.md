@@ -1,5 +1,7 @@
 # channel-surfer
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Qard/channel-surfer.svg)](https://greenkeeper.io/)
+
 Promise-based CSP channels, with async iterator support.
 
 ## Install

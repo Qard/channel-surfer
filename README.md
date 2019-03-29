@@ -14,15 +14,75 @@ npm install channel-surfer
 const Channel = require('channel-surfer')
 const chan = new Channel()
 
-async function consumer() {
+// Consume with a simple `for await` loop
+
+async function asyncAwaitConsumer() {
   for await (let message of chan) {
     console.log('received', message)
   }
 }
 
+// Or use the underlying promises with `channel.next()`
+
+function manualConsumer () {
+  channel.next().then(message => {
+    console.log('received', message)
+  }).then(manualConsumer)
+}
+
 setInterval(() => {
   chan.give('hello')
 }, 100)
+```
+
+## API
+
+### new Channel(): Channel
+
+Create a new channel
+
+```js
+const channel = new Channel()
+```
+
+### channel.give(value: any): void
+
+Give a value to the channel.
+
+```js
+channel.give('hello')
+```
+
+### channel.next(): Promise<IteratorItem<any>>
+
+Receive a value from the channel. Note that the final item in the channel will cycle to itself, so further calls to this method will continue to return the final item.
+
+```js
+channel.next() // { done: false, value: 'hello' }
+```
+
+### channel.close(): void
+
+Close the channel to indicate no more values will be sent. This is required for a `for await` loop to complete.
+
+```js
+channel.close()
+```
+
+### channel.error(error: any): void
+
+Send an error to the channel and then close it.
+
+```js
+channel.error(new Error('oh no!'))
+```
+
+### channel.giveBack(value: any): void
+
+Put a value at the top of the queue, to be received by the next request.
+
+```js
+channel.giveBack('hello')
 ```
 
 ---

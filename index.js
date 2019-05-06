@@ -33,13 +33,13 @@ class Channel {
   give (value) {
     const { input } = this
     this.input = input.ensureNext()
-    input.send(value)
+    return input.send(value)
   }
 
   next () {
     const { request } = this
     this.request = request.ensureNext()
-    return request.promise
+    return request.consume()
   }
 
   giveBack (value) {
@@ -58,15 +58,15 @@ class Channel {
       this.request = item
     }
 
-    item.send(value)
+    return item.send(value)
   }
 
   error (error) {
-    this.input.error(error)
+    return this.input.error(error)
   }
 
   close () {
-    this.input.close()
+    return this.input.close()
   }
 
   [Symbol.asyncIterator] () {
